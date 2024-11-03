@@ -1,12 +1,12 @@
-import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
+import {Flex, Spinner, Stack, Text} from "@chakra-ui/react";
 
-import { useQuery } from "@tanstack/react-query";
-import { BASE_URL } from "../App";
+import {useQuery} from "@tanstack/react-query";
+import {BASE_URL} from "../App";
 import ProductItem from "./ProductItem.tsx";
 
 export type Product = {
     id: string;
-    name: string;
+    title: string;
 };
 
 export type ProductListResponse = {
@@ -15,7 +15,7 @@ export type ProductListResponse = {
 }
 
 const ProductList = () => {
-    const { data: response, isLoading } = useQuery<ProductListResponse>({
+    const {data: response, isLoading} = useQuery<ProductListResponse>({
         queryKey: ["products"],
         queryFn: async () => {
             try {
@@ -47,11 +47,11 @@ const ProductList = () => {
                 bgGradient='linear(to-l, #0b85f8, #00ffff)'
                 bgClip='text'
             >
-                Products List
+                Latest Products
             </Text>
             {isLoading && (
                 <Flex justifyContent={"center"} my={4}>
-                    <Spinner size={"xl"} />
+                    <Spinner size={"xl"}/>
                 </Flex>
             )}
             {!isLoading && products?.length === 0 && (
@@ -59,12 +59,12 @@ const ProductList = () => {
                     <Text fontSize={"xl"} textAlign={"center"} color={"gray.500"}>
                         No products available! 😭
                     </Text>
-                    <img src='/go.png' alt='Go logo' width={70} height={70} />
+                    <img src='/go.png' alt='Go logo' width={70} height={70}/>
                 </Stack>
             )}
             <Stack gap={3}>
                 {products?.map((product) => (
-                    <ProductItem key={product.id} product={product} />
+                    <ProductItem key={product.id} product={product}/>
                 ))}
             </Stack>
         </>

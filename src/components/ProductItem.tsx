@@ -26,11 +26,10 @@ const TodoItem = ({ product }: { product: Product }) => {
 						color="green.200"
 						textDecoration="none"
 					>
-						Name = {product.name}
+						Title = {product.title}
 					</Text>
 
 				</Stack>
-
 
 			</Flex>
 		</Flex>
